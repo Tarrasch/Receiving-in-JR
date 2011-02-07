@@ -44,11 +44,6 @@ public class SimpleClock {
       }    
   }
   */  
-  
-  public op void timer(cap void() alarm, int ms) {
-    edu.ucdavis.jr.JR.nap(ms);
-    alarm();
-  }
 
   public static void main(String[] args) {
     System.out.println("Done.");
