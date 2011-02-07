@@ -35,12 +35,12 @@ import java.io.Serializable;
 		this.op_ticker_voidTovoid = op_ticker_voidTovoid;
 	}
 
-	public Cap_ext_ op_tick_voidTovoid;
-	public Cap_ext_ JRget_op_tick_voidTovoid() {
-		return op_tick_voidTovoid;
+	public Cap_ext_ op_tick_voidToboolean;
+	public Cap_ext_ JRget_op_tick_voidToboolean() {
+		return op_tick_voidToboolean;
 	}
-	public void JRset_op_tick_voidTovoid(Cap_ext_ op_tick_voidTovoid) {
-		this.op_tick_voidTovoid = op_tick_voidTovoid;
+	public void JRset_op_tick_voidToboolean(Cap_ext_ op_tick_voidToboolean) {
+		this.op_tick_voidToboolean = op_tick_voidToboolean;
 	}
 
 	public JRSimpleClock(JRSimpleClock copy)
@@ -48,7 +48,7 @@ import java.io.Serializable;
 	this.op_listener_voidTovoid = copy.op_listener_voidTovoid;
 	this.op_timer_Cap_voidTovoidXintTovoid = copy.op_timer_Cap_voidTovoidXintTovoid;
 	this.op_ticker_voidTovoid = copy.op_ticker_voidTovoid;
-	this.op_tick_voidTovoid = copy.op_tick_voidTovoid;
+	this.op_tick_voidToboolean = copy.op_tick_voidToboolean;
 
 	}
 	public JRSimpleClock(Object ... opSig)
@@ -56,7 +56,7 @@ import java.io.Serializable;
 	this.op_listener_voidTovoid = new Cap_ext_((Op_ext_.JRProxyOp)opSig[0]);
 	this.op_timer_Cap_voidTovoidXintTovoid = new Cap_ext_((Op_ext_.JRProxyOp)opSig[1]);
 	this.op_ticker_voidTovoid = new Cap_ext_((Op_ext_.JRProxyOp)opSig[2]);
-	this.op_tick_voidTovoid = new Cap_ext_((Op_ext_.JRProxyOp)opSig[3]);
+	this.op_tick_voidToboolean = new Cap_ext_((Op_ext_.JRProxyOp)opSig[3]);
 
 	}
 	public JRSimpleClock(boolean dummy)	{
@@ -64,7 +64,7 @@ import java.io.Serializable;
 	this.op_listener_voidTovoid = Cap_ext_.noop;
 	this.op_timer_Cap_voidTovoidXintTovoid = Cap_ext_.noop;
 	this.op_ticker_voidTovoid = Cap_ext_.noop;
-	this.op_tick_voidTovoid = Cap_ext_.noop;
+	this.op_tick_voidToboolean = Cap_ext_.noop;
 
 	}
 	public Object clone()

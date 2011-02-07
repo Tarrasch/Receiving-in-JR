@@ -12,12 +12,12 @@ import edu.ucdavis.jr.*;
 
 public class SimpleClock extends java.lang.Object {
     { JRinit(); }
-    public Op_ext.JRProxyOp JRget_op_tick_voidTovoid()
+    public Op_ext.JRProxyOp JRget_op_tick_voidToboolean()
     {
-        return op_tick_voidTovoid;
+        return op_tick_voidToboolean;
     }
     
-    public Op_ext.JRProxyOp op_tick_voidTovoid;
+    public Op_ext.JRProxyOp op_tick_voidToboolean;
     
     public // NUMBER 8
     Cap_ext_ alarmCap;
@@ -179,6 +179,7 @@ return null;
             {
                 long next = System.nanoTime();
                 long w = /*JR init for inni*/ 0;
+                boolean shouldContinue = /*JR init for inni*/ false;
                 JRLoop2: do {
                     // Begin Expr2
                     next += (delay * 1000000);
@@ -186,8 +187,19 @@ return null;
                     w = Math.max(0, (next - System.nanoTime()) / 1000000);
                     // Begin Expr2
                     edu.ucdavis.jr.JR.nap(w);
-                    JRget_op_tick_voidTovoid().send(jrvm.getTimestamp(), (edu.ucdavis.jr.RemoteHandler) null, (java.lang.Object[]) null);
-                }                 while (true);
+                    // Begin Expr2
+                    shouldContinue = ((Boolean) (new Cap_ext_(JRget_op_tick_voidToboolean(), "boolean")).call(jrvm.getTimestamp(), (java.lang.Object[]) null));
+                    // Begin Expr2
+                    System.out.println("Tickresult: " + shouldContinue);
+                }                 while (shouldContinue);
+                // Begin Expr2
+                System.out.println("tickerprocessen avslutas ...");
+                // Return
+                { if (retOp != null)
+                    retOp.send(jrvm.getTimestamp(), (edu.ucdavis.jr.RemoteHandler) null, null);
+                return ; }
+                // End Return
+
             }
         } catch (Exception JRe)    {
             if (retOp != null && fretOp == null)
@@ -555,7 +567,7 @@ return null;
                 JRLoop3: while (true) {
                     {
                         // Inni Statement without quantifier
-                        JRInstmt0.armArray[0] = new QuantRec(new Cap_ext_(op_tick_voidTovoid, "void"), 0, 0);
+                        JRInstmt0.armArray[0] = new QuantRec(new Cap_ext_(op_tick_voidToboolean, "boolean"), 0, 0);
                         JRInstmt0.armArray[1] = new QuantRec(alarmCap, 1, 1);
                         JRInstmt0.lock();
                         // Equivalence Class has been created and locked
@@ -604,6 +616,19 @@ return null;
                                                     {
                                                         // Begin Expr2
                                                         System.out.println("Tick");
+                                                        // Return
+                                                        {
+                                                            if (true)
+                                                                { if (JRrrecv0.retOp != null)
+                                                                    JRrrecv0.retOp.send(jrvm.getTimestamp(), (edu.ucdavis.jr.RemoteHandler) null, new java.lang.Object [] {(boolean)(false)});
+                                                                else {
+                                                                    boolean JRevaltmp = false;
+                                                                    
+                                                                }
+                                                                break _label_JRInstmt0; }}
+                                                        
+                                                        // End Return
+
                                                     }
                                                 } catch (Exception JRe) {
                                                     if (JRrrecv0.retOp != null && JRrrecv0.fretOp == null)
@@ -640,8 +665,7 @@ JRrrecv0.fretOp.send(jrvm.getTimestamp(), JRrrecv0.handler, (java.lang.Object []
                                                         }
                                                 }
                                             }
-                                            { if (JRrrecv0.retOp != null)
-                                                JRrrecv0.retOp.send(jrvm.getTimestamp(), (java.lang.Object []) null); }
+                                            
                                         }
                                         else
                                             JRInstmt0.releaseIter();
@@ -738,12 +762,6 @@ JRrrecv0.fretOp.send(jrvm.getTimestamp(), JRrrecv0.handler, (java.lang.Object []
                 }
                 // Begin Expr2
                 System.out.println("Nu har alarmet g\345tt");
-                // Return
-                { if (retOp != null)
-                    retOp.send(jrvm.getTimestamp(), (edu.ucdavis.jr.RemoteHandler) null, null);
-                return ; }
-                // End Return
-
             }
         } catch (Exception JRe)    {
             if (retOp != null && fretOp == null)
@@ -791,11 +809,11 @@ JRrrecv0.fretOp.send(jrvm.getTimestamp(), JRrrecv0.handler, (java.lang.Object []
     	op_listener_voidTovoid = new Op_ext_.JRProxyOp(new ProcOp_voidTovoid_impllistener(this));
     	op_timer_Cap_voidTovoidXintTovoid = new Op_ext_.JRProxyOp(new ProcOp_Cap_voidTovoidXintTovoid_impltimer(this));
     	op_ticker_voidTovoid = new Op_ext_.JRProxyOp(new ProcOp_voidTovoid_implticker(this));
-    	op_tick_voidTovoid = 
+    	op_tick_voidToboolean = 
     	  new Op_ext_.JRProxyOp(new InOp_ext_impl());
     	} catch (Exception JRe)
     	{ throw new jrRuntimeError(JRe.toString()); }
-    	jrresref = new JRSimpleClock(op_listener_voidTovoid, op_timer_Cap_voidTovoidXintTovoid, op_ticker_voidTovoid, op_tick_voidTovoid);
+    	jrresref = new JRSimpleClock(op_listener_voidTovoid, op_timer_Cap_voidTovoidXintTovoid, op_ticker_voidTovoid, op_tick_voidToboolean);
     	this.JRcalled = true;
     }
     private boolean JRproc = false;

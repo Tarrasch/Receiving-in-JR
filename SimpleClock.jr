@@ -3,7 +3,7 @@ import edu.ucdavis.jr.*;
 
 public class SimpleClock {
 
-  public op void tick();
+  public op boolean tick();
   public cap void() alarmCap;
   
   private int delay;
@@ -19,12 +19,16 @@ public class SimpleClock {
   private process ticker {
     long next = System.nanoTime();
     long w;
+    boolean shouldContinue; 
     do {
       next += (delay*1000000);
       w = Math.max(0,(next-System.nanoTime())/1000000);
       edu.ucdavis.jr.JR.nap(w);
-      send tick();
-    } while (true);
+      shouldContinue = tick(); 
+      System.out.println("Tickresult: " + shouldContinue);       
+    } while (shouldContinue);
+    System.out.println("tickerprocessen avslutas ..."); 
+
   }
 
   public op void timer(cap void() alarm, int ms) {
@@ -55,9 +59,10 @@ public class SimpleClock {
 
     while(true)
       {	
-	inni void tick()
+	inni boolean tick()
 	{
-	  System.out.println("Tick");	   
+	  System.out.println("Tick");
+	  return true;	  
 	}
 	[] void alarmCap()
 	  {
