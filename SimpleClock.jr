@@ -4,11 +4,15 @@ import edu.ucdavis.jr.*;
 public class SimpleClock {
 
   public op void tick();
+  public cap void() alarmCap;
   
   private int delay;
 
   public SimpleClock(int delay) {
     this.delay = delay;
+    this.alarmCap = new op void();
+    send timer(alarmCap, delay*3);
+    
   }
 
 
@@ -48,12 +52,20 @@ public class SimpleClock {
 
   public process listener 
   {
+
     while(true)
       {	
-	System.out.println("Hej");	
-	receive this.tick();	
-    
+	inni void tick()
+	{
+	  System.out.println("Tick");	   
+	}
+	[] void alarmCap()
+	  {
+	    break;	    
+	  }    
       }
+    System.out.println("Nu har alarmet gått");
+    
   }
   
 
