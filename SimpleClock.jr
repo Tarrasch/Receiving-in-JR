@@ -3,7 +3,7 @@ import java.util.*;
 public class SimpleClock {
 
   public op void tick();
-
+  
   private int delay;
 
   public SimpleClock(int delay) {
@@ -27,7 +27,8 @@ public class SimpleClock {
     alarm();
   }
 
-
+  //Nedan är kod för som är ekvivalent med ovanstående timer
+  /*
   public op void timer(cap void() alarm, int ms);
   
   public process abc
@@ -42,7 +43,7 @@ public class SimpleClock {
 	
       }    
   }
-  
+  */  
   
   public op void timer(cap void() alarm, int ms) {
     edu.ucdavis.jr.JR.nap(ms);
